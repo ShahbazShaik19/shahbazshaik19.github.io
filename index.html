@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" >
+    <link rel="stylesheet" href="three_animation.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <form action="" method="GET" onsubmit="return validate()" >
+        <input type="number" id="amount" name="amount" value="132" ><br><br><br>
+        <div id="category_wrapper">
+            <input type='radio' name='category' value='red' id='one' required >
+            <label for='one' ><div id='red' class='category' ><i class="fa-solid fa-plane-departure"></i></div></label>
+
+            <input type='radio' name='category' value='yellow' id='three' class="triggerButton" required >
+            <label for='three' ><div id='yellow' class='category' ><i class="fa-solid fa-utensils"></i></i></div></label>
+
+            <input type='radio' name='category' value='blue' id='two' required >
+            <label for='two' ><div id='blue' class='category' ><i class="fa-solid fa-cart-shopping"></i></div></label>        
+            <br>
+            <input type='radio' name='category' value='green' id='four' required >
+            <label for='four' ><div id='green' class='category' ><i class="fa-solid fa-graduation-cap"></i></div></label>
+
+            <input type='radio' name='category' value='purple' id='five' required >
+            <label for='five' ><div id='purple' class='category' ><i class="fa-solid fa-mobile-screen-button"></i></div></label>
+
+            <input type='radio' name='category' value='pink' id='six' required >
+            <label for='six' ><div id='pink' class='category' >•••</div></label>
+            
+            <input type="radio" name="sub_category" value="fb" id="fb" >
+            <label for="fb" class="one fa-brands fa-facebook-f"></label>
+            <input type="radio" name="sub_category" value="tw" id="tw" >
+            <label for="tw" class="two fa-brands fa-twitter"></label>
+            <input type="radio" name="sub_category" value="in" id="in" >
+            <label for="in" class="three fa-brands fa-instagram"></label>
+        </div>
+        <input type="submit" id="submit" >
+
+    </form>
+    <!-- <input type='radio' name='category' value='red' id='one' >
+    <label for='one' ><div id='red'>Text With Red Background</div></label>
+
+    <input type='radio' name='category' value='blue' id='two' >
+    <label for='two' ><div id='blue'>Text With Blue Background</div></label>
+
+    <input type='radio' name='category' value='green' id='3' >
+    <label for='3' ><div id='green'>Text With Blue Background</div></label> -->
+</body>
+<script>
+    // $(document).ready(function(){
+    //     $("#amount").focus();
+    //     $("#category_wrapper").css("opacity","0");
+    //     $("#category_wrapper").hide();
+    //     $("#amount").on("keyup", function(){
+    //         if($(this).val() != ""){
+    //             $("#category_wrapper").show();
+    //             setTimeout(function(){$("#category_wrapper").css("opacity","1");},200);
+                
+    //         }else{
+    //             $("#category_wrapper").css("opacity","0");
+    //             setTimeout(function(){$("#category_wrapper").hide();},500);
+    //         }
+    //     });
+    // });
+    
+    $("#three").change(function(){
+        if(($("#three").is(":checked"))){
+            $("input[name='sub_category']").each(
+                function(){
+                    $(this).prop("checked",false);
+                }
+            );
+        }
+    });
+
+    function validate(){
+        if($("#three").is(":checked")){
+            if (!$("input[name='sub_category']:checked").val()) {
+                alert('Nothing is checked!');
+                return false;
+            }
+        }
+        else{
+            $("input[name='sub_category']").each(
+                function(){
+                    $(this).prop("checked",false);
+                }
+            );
+        }
+    }
+</script>
+<script>
+    $('input[type="radio"]').click(() => {
+        var selectedValue = $('input[type="radio"]:checked').val();
+        $('#' + selectedValue).css("background", "radial-gradient(white, "+selectedValue+")");
+        //$('#' + selectedValue).css("background-color", selectedValue);
+        $('input[type="radio"]:not(:checked)').each(
+            function(){
+               $('#'+ $(this).val()).css("background", "none");
+               //$('#' + selectedValue).css("background-color", "transaprent");
+            });
+    });
+</script>
+</html>
+<!-- 
+    >>> Travel
+    >>> Food
+    >>> Essentials
+    >>> Academic
+    >>> Mobile
+    >>> Others
+ -->

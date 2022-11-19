@@ -1,0 +1,44 @@
+.one, .two, .three {
+    cursor: pointer;
+    position: absolute;
+    left: calc(50%);
+    transform: translateX(-50%);
+    bottom: 65%;
+    padding: 1em;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 1;
+    font-size: 1em;
+    color: #fff;
+    transition-property: all;
+    transition-duration: .35s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  #yellow{
+    z-index: 2;
+  }
+
+  .triggerButton:checked ~ .one, .triggerButton:checked ~ .two, .triggerButton:checked ~ .three { opacity: 1; }
+
+  .triggerButton:checked ~ .one {
+    background-color: purple;
+    transform: translateX(3.5em) translateY(-3.5em) translateX(-50%);
+    transition-delay: .2s;
+  }
+  
+  .triggerButton:checked ~ .two {
+    background-color: slateblue;
+    transform: translateX(-3.5em) translateX(-50%) translateY(-3.5em);
+    
+  }
+  
+  .triggerButton:checked ~ .three {
+    background-color: mediumorchid;
+    transform: translateY(-5em) translateX(-50%);
+    transition-delay: .1s;
+  }
+  
+  .triggerButton:checked ~.one:hover, .triggerButton:checked ~ .two:hover, .triggerButton:checked ~ .three:hover { opacity: .9; }
